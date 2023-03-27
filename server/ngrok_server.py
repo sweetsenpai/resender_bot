@@ -1,7 +1,6 @@
 
-from pyngrok import conf, ngrok
-import os
-ngrok_token = os.environ['rsn_token']
+from pyngrok import ngrok
+ngrok_token = '2NQOzATCmjSDbEajxjTVZB1mA8k_3kP8VK7eHG1Pvs2ksPhHd'
 
 
 def get_https():
