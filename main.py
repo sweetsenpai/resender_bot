@@ -32,8 +32,8 @@ async def resender(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await context.bot.forward_message(chat_id=366585, from_chat_id=update.message.chat_id,message_id=update.message.message_id)
     except telegram.error.BadRequest:
         pass
-    await update.message.reply_text(text='Спасибо! Я отправил Ваш пост на модерацию.\nПрисоединяйтесь к ресурсам Петроградского района:\n'
-                                         '\n\nЧат Диаспоры: @ChatPS\nМаркет: @PSideMarket\nПрофи и мастера: @PSPROF')
+    await update.message.reply_text(text='Спасибо! Я отправил Ваш пост на модерацию.\n\nПрисоединяйтесь к ресурсам Петроградского района:\n'
+                                         '\nЧат Диаспоры: @ChatPS\nМаркет: @PSideMarket\nПрофи и мастера: @PSPROF')
 
 
 def main() -> None:
