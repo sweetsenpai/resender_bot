@@ -5,7 +5,7 @@ from server.ngrok_server import get_https
 import logging
 
 
-token = '6316622089:AAH7veU0phCyJcrOEqV7rZfmD2g9EOiFmX4'
+
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
 )
