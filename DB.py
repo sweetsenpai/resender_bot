@@ -7,8 +7,8 @@ Base = declarative_base()
 
 class Bans(Base):
     __tablename__ = 'bans'
-    word_id = sql.Column(name='ban_id', type_=sql.Integer, primary_key=True)
-    word = sql.Column(name='user_id', type_=sql.Integer)
+    ban_id = sql.Column(name='ban_id', type_=sql.Integer, primary_key=True)
+    user_id = sql.Column(name='user_id', type_=sql.Integer)
 
     def __int__(self, ban_id, user_id):
         self.ban_id = ban_id
