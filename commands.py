@@ -1,6 +1,7 @@
 import telegram.error
-from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler,filters
-from telegram import Update
+from telegram.ext import ContextTypes
+from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
+from DB import Session
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -16,8 +17,10 @@ async def resender(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(chat_id=352354383, text='Новое сообщение!')
     message = await context.bot.forward_message(chat_id=352354383, from_chat_id=update.message.chat_id,
                                                 message_id=update.message.message_id)
-    await context.bot.send_message(text='Забанить пользователя за спам?',
-                                   reply_markup='')
+    await context.bot.send_message(chat_id=352354383,
+                                   text=f'Забанить пользователя @{message.chat.username} за спам?',
+                                   reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text='Выдать бан🚫',
+                                                                                            callback_data=f'BAN:{message.chat.id}')]]))
     # try:
     #     await context.bot.send_message(chat_id=366585, text='Новое сообщение!')
     #     await context.bot.forward_message(chat_id=366585, from_chat_id=update.message.chat_id, message_id=update.message.message_id)
@@ -26,3 +29,9 @@ async def resender(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(text='Спасибо! Я отправил Ваш пост на модерацию.\n\nПрисоединяйтесь к ресурсам Петроградского района:\n'
                                          '\nЧат Диаспоры: @ChatPS\nМаркет: @PSideMarket\nПрофи и мастера: @PSPROF')
 
+
+async def ban_user(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user_ban = update.callback_query.data.replace('BAN:', '')
+    print(user_ban)
+
+    return
